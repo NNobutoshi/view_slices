@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>jQuery.view_slices</title>
+<link rel="stylesheet" href="../css/view_slices.css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<!-- sample -->
+<style>
+#page {
+	overflow : hidden;
+}
+.area-main-01 {
+	max-width    : 800px;
+	margin-right : auto;
+	margin-left  : auto;
+	margin-top   : 2em;
+	position     : relative;
+}
+#pageHead {
+	border-bottom  : solid 1px #b00;
+	padding-bottom : 0.5em;
+	position       : relative;
+}
+#pageBody-main header h1{
+	position      : absolute;
+	right         : 50%;
+	top           : 50%;
+ 	margin-top    : -0.5em;
+ 	color         : #fafafa;
+ 	font-size     : 20em;
+	text-align    : center;
+ 	z-index       : -1;
+ 	-ms-transform : rotate(-25deg) translateX(50%);
+ 	transform     : rotate(-25deg) translateX(50%);
+}
+</style>
+<!-- /sample -->
+</head>
+<body>
+<div class="page-01" id="page">
+
+<header class="region" id="pageHead">
+<div class="areaGroup">
+<h1>jQuery view_slices</h1>
+</div>
+<!-- /.region#pageHead --></header>
+
+<section class="pageBody region" id="pageBody-main">
+<div class="areaGroup">
+<header>
+<h1>Sample</h1>
+</header>
+<div class="area-main-01">
+<!-- sample -->
+
+<!-- component -->
+<ul class="list-01">
+<li>hoge</li>
+<li>hogege</li>
+<!-- list-01 --></ul>
+<!-- /component -->
+
+<!-- component -->
+<ul class="linkList-01">
+<li><a href="#">hoge</a></li>
+<li><a href="#">hogehoge</a></li>
+<!-- linkList --></ul>
+<!-- /component -->
+
+<!-- component -->
+<ol class="orderdList-01">
+<li>hoge</li>
+<li>hogege</li>
+<!-- orderdList-01 --></ol>
+<!-- /component -->
+
+<!-- component -->
+<div class="pair-01">
+<figure>
+<img src="img/sample.png" alt="sample" width="300" height="200" />
+<figcaption>hoge</figcaption>
+</figure>
+<figure>
+<img src="img/sample.png" alt="sample" width="300" height="200" />
+<figcaption>hoge</figcaption>
+</figure>
+<!-- pair-01 --></div>
+<!-- /component -->
+
+<!-- component -->
+<div class="group-01">
+<figure>
+<img src="img/sample.png" alt="sample" width="300" height="200" />
+<figcaption>hoge</figcaption>
+</figure>
+<figure>
+<img src="img/sample.png" alt="sample" width="300" height="200" />
+<figcaption>hoge</figcaption>
+</figure>
+<figure>
+<img src="img/sample.png" alt="sample" width="300" height="200" />
+<figcaption>hoge</figcaption>
+</figure>
+<!-- group-01 --></div>
+<!-- /component -->
+
+</div>
+<!-- /.areaGroup --></div>
+<!-- /.pageBody.region#pageBody-main --></section>
+
+<!-- /.page-01#page --></div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="../jquery.view_slices.js" charset="utf-8"></script>
+<!-- sample -->
+<script>
+(function($){
+	$('.area-main-01>*').view_slices();
+})(jQuery);
+</script>
+<!-- /sample -->
+</body>
+</html>

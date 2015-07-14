@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+.js-vs-heading {
+	font-size     : 200%;
+	font-weight   : bold;
+	color         : #d00;
+	border-bottom : solid 10px #efefef;
+}
+.js-vs-panel {
+	border        : solid 1px #bbb;
+	padding       : 20px;
+	background    : #fafafa;
+	height        : 40%;
+	width         : 700px;
+	min-width     : 500px;
+	min-height    : 300px;
+	box-shadow    : 2px 4px 10px 1px rgba(0,0,0,0.2);
+	border-radius : 10px;
+}
+.js-vs-textarea {
+	max-width  : 100%;
+	min-width  : 100%;
+	max-height : 60%;
+	min-height : 60%;
+	margin-top : 10px;
+	padding    : 10px;
+	border     : solid 1px #bbb;
+	box-sizing : border-box;
+}
+.js-vs-open {
+	border      : solid 1px #ddd;
+	padding     : 5px 10px;
+	margin-top  : 3em;
+	margin-left : auto;
+	width       : 7em;
+	display     : block;
+	text-align  : center;
+}
+.js-vs-close {
+	background  : #f4f4f4;
+	display     : block;
+	padding     : 0.5em 10px 0.2em;
+	margin-top  : -10px;
+	margin-left : auto;
+	width       : 5em;
+	height      : 1.4em;
+	text-align  : center;
+	border      : solid 1px #bbb;
+	line-height : 1;
+}
+.js-vs-close:before {
+	content      : '×';
+	display      : inline-block;
+	margin-right : 0.5em;
+}
+.js-vs-title {
+	margin-right : 6em;
+	margin-top   : -1.5em;
+	font-size    : 120%;
+	color        : #d00;
+}
+.js-vs-replace {
+	margin-left : 10px;
+}
+.js-vs-input {
+	border-width : 1px;
+	border-style : solid;
+	padding      : 0.2em;
+	border-color : #bbb #ddd #ddd #bbb;
+}
+.js-vs-input,
+.js-vs-replace,
+.js-vs-reset {
+	display        : inline-block;
+	vertical-align : middle;
+}
+.js-vs-reset {
+	margin-left : 10px;
+}
+.js-vs-reset:before {
+	content      : '|';
+	display      : inline-block;
+	margin-right : 10px;
+}
+.js-vs-checkList {
+	margin-top   : 1em;
+	margin-left  : 0;
+	padding-left : 0;
+}
+.js-vs-checkList li {
+	display : inline-block;
+}
