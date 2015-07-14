@@ -1,6 +1,6 @@
 /*!
 * jQuery.view_slices
-* version : 1.0.0
+* version : 1.0.1
 * link    : https://github.com/NNobutoshi/view_slices/
 * License : MIT
 */
@@ -195,26 +195,27 @@
 			,'left' : left + 'px'
 		});
 	}
-	function _replaceText (str,newStr,targets) {
+	function _replaceText (str,substr,targets) {
 		var
-		 i = 1
+		 i         = 1
+		,newSubStr = substr
 		;
 		return str
 		 .replace(/(>[^<>\n\r]+<)|(>[^<>\n\r]+\n)|(href="[^"]*"|src="[^"]*"|width="[^"]*"|height="[^"]*"|alt="[^"]*")/g,function(m){
-			if(newStr.indexOf('$') === 0){
-				newStr = '${'
+			if(substr.indexOf('$') === 0){
+				newSubStr = '${'
 					+ i
 					+ ':'
-					+ newStr.split('$')[1]
+					+ substr.split('$')[1]
 					+ '}'
 				;
 			}
 			if(m.indexOf('>') === 0){
 				i++;
 				if(m.lastIndexOf('<')) {
-					return '>' +newStr+ '<';
+					return '>' +newSubStr+ '<';
 				}else{
-					return '>' +newStr+ '\n';	
+					return '>' +newSubStr+ '\n';	
 				}
 			}else{
 				var
@@ -222,7 +223,7 @@
 				;
 				if(targets[name]){
 					i++;
-					return name+'="' +newStr+ '"';
+					return name+'="' +newSubStr+ '"';
 				}else{
 					return m;
 				}
