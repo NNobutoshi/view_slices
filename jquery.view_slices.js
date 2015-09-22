@@ -1,9 +1,10 @@
 /*!
 * jQuery.view_slices
-* version : 1.0.1
+* version : 1.0.2
 * link    : https://github.com/NNobutoshi/view_slices/
 * License : MIT
 */
+
 ;(function($,window){
   'use strict';
   var
@@ -24,7 +25,7 @@
     }
   }
   ;
-  $.fn[pluginName] = function() {
+  $.fn[pluginName] = function(){
     var
      $that    = this
     ,options  = arguments[0] || {}
@@ -46,32 +47,32 @@
       ,type     : 'GET'
       ,dataType : 'text'
     })
-     .done(function(data){
-      var
-       sources = []
-      ;
-      data = data.split(settings.startComment);
-      for(var i=1,len=data.length;i<len;i++){
-        sources[sources.length] = data[i]
-         .split(settings.endComment)[0]
-         .replace(/^\r\n/,'')
-         .replace(/\r\n$/,'')
-         .replace(/^\n/,'')
-         .replace(/\n$/,'')
+      .done(function(data){
+        var
+         sources = []
         ;
-      }
-      $that.each(function(i){
-          _init(this,settings,sources[i]);
-      });
-     })
-     .fail(function(){
-      alert('error!');
-     })
+        data = data.split(settings.startComment);
+        for(var i = 1,len = data.length;i < len;i++){
+          sources[sources.length] = data[i]
+            .split(settings.endComment)[0]
+            .replace(/^\r\n/,'')
+            .replace(/\r\n$/,'')
+            .replace(/^\n/,'')
+            .replace(/\n$/,'')
+          ;
+        }
+        $that.each(function(i){
+            _init(this,settings,sources[i]);
+        });
+      })
+      .fail(function(){
+        alert('error!');
+      })
     ;
     return this;
   };
 
-  function _init (element,settings,src) {
+  function _init(element,settings,src){
     var
      $element  = $(element)
     ,$viewbtn  = $('<a href="#" class="js-vs-open js-vs-btn">ソースを表示</a>')
@@ -81,20 +82,22 @@
     $element.data(pluginName,src);
 
     $viewbtn
-     .insertAfter(element)
-     .on('click',function(){
-       _view(src,settings,titleText);
-      return false;      
-    });
+      .insertAfter(element)
+      .on('click',function(){
+        _view(src,settings,titleText);
+        return false;
+      })
+    ;
     if(settings.heading) {
       $element.before('<div class="js-vs-heading">'+ titleText +'</div>');
     }
   }
+
   function _view(src,settings,titleText){
     var
      $panel       = $('<div class="'+ settings.panelClass + '" />')
     ,$heading     = $('<p class="js-vs-title">'+ titleText +'</p>')
-    ,$replaceBtn  = $('<a class="js-vs-replace js-vs-btn" href="#">テキストを置き換える<\/a>')
+    ,$replaceBtn  = $('<a class="js-vs-replace js-vs-btn" href="#">テキストを置き換える</a>')
     ,$resetBtn    = $('<a class="js-vs-reset js-vs-btn" href="#">元に戻す</a>')
     ,$closeBtn    = $('<a class="js-vs-close js-vs-btn" href="#">閉じる</a>')
     ,$textArea    = $('<textarea class="js-vs-textarea">'+ src +'</textarea>')
@@ -107,22 +110,22 @@
       +'<li><label><input type="checkbox"' + settings.targetAttrs.height + '" class="js-vs-check-height" />height</label></li>'
       +'<li><label><input type="checkbox"' + settings.targetAttrs.alt    + '" class="js-vs-check-alt"    />alt</label></li>'
       +'</ul>'
-     )
+    )
     ;
     $panel
-     .append($closeBtn)
-     .append($heading)
-     .append($textArea)
-     .append($checkList)
-     .append($input)
-     .append($replaceBtn)
-     .append($resetBtn)
-     .draggable()
-     .resizable()
-     .on('mousedown',function(){
-      _floatUp($panel,settings.panelClass);
-     })
-     .appendTo('body')
+      .append($closeBtn)
+      .append($heading)
+      .append($textArea)
+      .append($checkList)
+      .append($input)
+      .append($replaceBtn)
+      .append($resetBtn)
+      .draggable()
+      .resizable()
+      .on('mousedown',function(){
+        _floatUp($panel,settings.panelClass);
+      })
+      .appendTo('body')
     ;
     $replaceBtn.on('click',function(){
       var
@@ -173,13 +176,13 @@
     ;
     if(len > 1 && flag) {
       $element.css({
-         'top'  : parseInt($element.css('top') )+(len-1)*10 + 'px'
-        ,'left' : parseInt($element.css('left'))+(len-1)*10 + 'px'
+         'top'  : parseInt($element.css('top') ) + (len - 1) * 10 + 'px'
+        ,'left' : parseInt($element.css('left')) + (len - 1) * 10 + 'px'
       });
     }
-    $element.css('zIndex',Math.max.apply(null,zIndexes)+1+'');
+    $element.css('zIndex',Math.max.apply(null,zIndexes) + 1 + '');
   }
-  function _setCenterPos ($element,pos){
+  function _setCenterPos($element,pos){
     var
      $w   = $(window)
     ,top  = (pos === 'absolute')?$w.scrollTop():0
@@ -189,46 +192,49 @@
        'position' : pos
     });
     top  += ($w.height() - $element.outerHeight()) / 2;
-    left += ($w.width()  - $element.width())  / 2;
+    left += ($w.width()  - $element.width())       / 2;
     return $element.css({
        'top'  : top  + 'px'
       ,'left' : left + 'px'
     });
   }
-  function _replaceText (str,substr,targets) {
+  function _replaceText(str,substr,targets){
     var
      i         = 1
     ,newSubStr = substr
-    ;
-    return str
-     .replace(/(>[^<>\n\r]+<)|(>[^<>\n\r]+\n)|(href="[^"]*"|src="[^"]*"|width="[^"]*"|height="[^"]*"|alt="[^"]*")/g,function(m){
-      if(substr.indexOf('$') === 0){
-        newSubStr = '${'
-          + i
-          + ':'
-          + substr.split('$')[1]
-          + '}'
-        ;
-      }
-      if(m.indexOf('>') === 0){
-        i++;
-        if(m.lastIndexOf('<')) {
-          return '>' +newSubStr+ '<';
-        }else{
-          return '>' +newSubStr+ '\n';  
+    ,ret       = str
+      .replace(
+         /(>[^<>\n\r]+<)|(>[^<>\n\r]+\n)|(href="[^"]*"|src="[^"]*"|width="[^"]*"|height="[^"]*"|alt="[^"]*")/g
+        ,function(m){
+          if(substr.indexOf('$') === 0){
+            newSubStr = '${'
+              + i
+              + ':'
+              + substr.split('$')[1]
+              + '}'
+            ;
+          }
+          if(m.indexOf('>') === 0){
+            i++;
+            if(m.lastIndexOf('<')) {
+              return '>' + newSubStr + '<';
+            }else{
+              return '>' + newSubStr + '\n';
+            }
+          }else{
+            var
+             name = m.split('="')[0]
+            ;
+            if(targets[name]){
+              i++;
+              return name + '="' + newSubStr + '"';
+            }else{
+              return m;
+            }
+          }
         }
-      }else{
-        var
-         name = m.split('="')[0]
-        ;
-        if(targets[name]){
-          i++;
-          return name+'="' +newSubStr+ '"';
-        }else{
-          return m;
-        }
-      }
-    })
+      )
     ;
+    return ret;
   }
 })(jQuery,this);
