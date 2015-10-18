@@ -10,12 +10,13 @@
 	border        : solid 1px #bbb;
 	padding       : 20px;
 	background    : #fafafa;
-	height        : 40%;
+	height        : 45%;
 	width         : 700px;
 	min-width     : 500px;
 	min-height    : 300px;
 	box-shadow    : 2px 4px 10px 1px rgba(0,0,0,0.2);
 	border-radius : 10px;
+	font-size     : 14px;
 }
 .js-vs-textarea {
 	max-width  : 100%;
@@ -55,8 +56,9 @@
 }
 .js-vs-title {
 	margin-right : 6em;
-	margin-top   : -1.5em;
-	font-size    : 120%;
+	margin-top   : -1em;
+	font-size    : 160%;
+	font-weight  : bold;
 	color        : #d00;
 }
 .js-vs-replace {
