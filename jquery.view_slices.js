@@ -1,6 +1,6 @@
 /*!
 * jQuery.view_slices
-* version : 1.0.3
+* version : 1.0.4
 * link    : https://github.com/NNobutoshi/view_slices/
 * License : MIT
 */
